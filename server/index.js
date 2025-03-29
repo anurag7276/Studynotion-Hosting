@@ -19,7 +19,7 @@ dotenv.config();
 // Setting up port number
 // const PORT = process.env.PORT || 4000;
 
-const PORT = process.env.PORT || 10001;
+const PORT = process.env.PORT || 10000;
 
 // Connecting to database
 database.connect();
@@ -63,18 +63,16 @@ app.get("/", (req, res) => {
 // 	console.log(`App is listening at ${PORT}`);
 // });
 
-      setTimeout(() => {
-	app.listen(PORT, '0.0.0.0', () => {
-		console.log(`Server running on port ${PORT}`);
-	      });
-      }, 1000);
-
-
-    
+   
+     const server = app.listen(process.env.PORT || 10000, () => {
+	console.log(`Server running on port ${process.env.PORT || 10000}`);
+      });
       
-      // Increase timeouts
-      server.keepAliveTimeout = 120000;
-      server.headersTimeout = 120000;
+      // Now you can set keepAliveTimeout
+      server.keepAliveTimeout = 120000; // 120 seconds
+    
+
+   
       
 
 // End of code.
