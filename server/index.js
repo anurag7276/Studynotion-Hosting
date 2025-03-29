@@ -19,7 +19,7 @@ dotenv.config();
 // Setting up port number
 // const PORT = process.env.PORT || 4000;
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 10001;
 
 // Connecting to database
 database.connect();
@@ -63,17 +63,14 @@ app.get("/", (req, res) => {
 // 	console.log(`App is listening at ${PORT}`);
 // });
 
+      setTimeout(() => {
+	app.listen(PORT, '0.0.0.0', () => {
+		console.log(`Server running on port ${PORT}`);
+	      });
+      }, 1000);
 
-   app.listen(PORT, '0.0.0.0', () => {
-	console.log(`Server running on port ${PORT}`);
-      });
 
-
-
-
-      const server = app.listen(PORT, '0.0.0.0', () => {
-	console.log(`Server running on port ${PORT}`);
-      });
+    
       
       // Increase timeouts
       server.keepAliveTimeout = 120000;
